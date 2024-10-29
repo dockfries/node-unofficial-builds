@@ -45,7 +45,6 @@ jobs:
           path: out/${{ matrix.buildtype }}/libnode.lib
       - name: Create a build archive
         uses: vimtor/action-zip@v1.2
-        shell: bash
         with:
           files: out/${{ matrix.buildtype }}/libnode.lib out/${{ matrix.buildtype }}/libnode.dll
           dest: libnode-win-x64-${{ matrix.buildtype }}.zip
@@ -91,7 +90,6 @@ jobs:
           path: out/${{ matrix.buildtype }}/libnode.lib
       - name: Create a build archive
         uses: vimtor/action-zip@v1.2
-        shell: bash
         with:
           files: out/${{ matrix.buildtype }}/libnode.lib out/${{ matrix.buildtype }}/libnode.dll
           dest: libnode-win-x84-${{ matrix.buildtype }}.zip
