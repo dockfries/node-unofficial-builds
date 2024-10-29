@@ -1,4 +1,4 @@
-name: Release
+name: Linux Build
 
 on:
   push:
@@ -10,6 +10,25 @@ env:
   FLAKY_TESTS: dontcare
 
 jobs:
+  build-linux-x64:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Build
+        run: |
+          bin/local_build.sh -r x64-pointer-compression -v v18.20.3
+      - name: Extract tgz
+        uses: ihiroky/extract-action@v1
+        with:
+          file_path: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x64-pointer-compression.tar.xz
+          extract_dir: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: libnode.so.108
+          path: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x64-pointer-compression/lib/libnode.so.108
   build-linux-x86:
     runs-on: ubuntu-latest
     steps:
