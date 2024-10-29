@@ -27,8 +27,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: libnode.so.108
+          name: libnode-x64.so.108
           path: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x64-pointer-compression/lib/libnode.so.108
+
   build-linux-x86:
     runs-on: ubuntu-latest
     steps:
@@ -46,5 +47,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: libnode.so.108
+          name: libnode-x86.so.108
           path: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x86/lib/libnode.so.108
