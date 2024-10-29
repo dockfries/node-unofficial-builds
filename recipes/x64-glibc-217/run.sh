@@ -46,6 +46,6 @@ make -j$(getconf _NPROCESSORS_ONLN) binary V= \
   DATESTRING="$datestring" \
   COMMIT="$commit" \
   RELEASE_URLBASE="$release_urlbase" \
-  CONFIG_FLAGS="$config_flags"
+  CONFIG_FLAGS="--shared"
 
 mv node-*.tar.?z /out/

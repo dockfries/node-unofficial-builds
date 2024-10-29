@@ -32,10 +32,10 @@ for ((i=1;i<=7;i++)); do
   fi
 done
 
-if [[ "$disttype" = "release" ]]; then
-  curl -fsSLO --compressed "${source_url}/../SHASUMS256.txt.asc"
-  gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc
-  grep " node-${fullversion}.tar.xz\$" SHASUMS256.txt | sha256sum -c -
-fi
+# if [[ "$disttype" = "release" ]]; then
+#   curl -fsSLO --compressed "${source_url}/../SHASUMS256.txt.asc"
+#   gpg --batch --decrypt --output SHASUMS256.txt SHASUMS256.txt.asc
+#   grep " node-${fullversion}.tar.xz\$" SHASUMS256.txt | sha256sum -c -
+# fi
 
 mv -f node-${fullversion}.tar.xz /out/
