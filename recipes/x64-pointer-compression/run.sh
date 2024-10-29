@@ -10,7 +10,7 @@ datestring="$4"
 commit="$5"
 fullversion="$6"
 source_url="$7"
-config_flags=--experimental-enable-pointer-compression
+config_flags=""
 
 cd /home/node
 
@@ -42,6 +42,6 @@ make -j$(getconf _NPROCESSORS_ONLN) binary V= \
   DATESTRING="$datestring" \
   COMMIT="$commit" \
   RELEASE_URLBASE="$release_urlbase" \
-  CONFIG_FLAGS="$config_flags"
+  CONFIG_FLAGS="--shared"
 
 mv node-*.tar.?z /out/
