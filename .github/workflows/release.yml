@@ -23,3 +23,8 @@ jobs:
           ls
           cd /
           tree
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: node-v18.20.3-linux-x86.tar.xz
+          path: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x86.tar.xz
