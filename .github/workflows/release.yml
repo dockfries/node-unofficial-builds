@@ -19,3 +19,7 @@ jobs:
       - name: Build
         run: |
           bin/local_build.sh -r x86 -v v18.20.3
+          cd /out/
+          ls
+          cd /
+          tree
