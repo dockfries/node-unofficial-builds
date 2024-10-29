@@ -1,0 +1,21 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - "*"
+
+env:
+  PYTHON_VERSION: "3.10"
+  FLAKY_TESTS: dontcare
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Build
+        run: |
+          bin/local_build.sh -r x86 -v v18.20.3
