@@ -49,12 +49,11 @@ jobs:
           files: out/${{ matrix.buildtype }}/libnode.lib out/${{ matrix.buildtype }}/libnode.dll
           dest: libnode-win-x64-${{ matrix.buildtype }}.zip
       - name: Release the new binaries
-        uses: mini-bomba/create-github-release@v1.1.3
+        uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: "latest"
-          files: |
-            libnode-win-x64-${{ matrix.buildtype }}.zip
+          tag_name: "latest"
+          files: libnode-win-x64-${{ matrix.buildtype }}.zip
   build-windows-x86:
     runs-on: windows-2019
     strategy:
@@ -94,9 +93,8 @@ jobs:
           files: out/${{ matrix.buildtype }}/libnode.lib out/${{ matrix.buildtype }}/libnode.dll
           dest: libnode-win-x84-${{ matrix.buildtype }}.zip
       - name: Release the new binaries
-        uses: mini-bomba/create-github-release@v1.1.3
+        uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          tag: "latest"
-          files: |
-            libnode-win-x84-${{ matrix.buildtype }}.zip
+          tag_name: "latest"
+          files: libnode-win-x84-${{ matrix.buildtype }}.zip
