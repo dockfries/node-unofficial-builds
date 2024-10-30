@@ -29,6 +29,15 @@ jobs:
         with:
           name: libnode-x64.so.108
           path: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x64-pointer-compression/lib/libnode.so.108
+      - name: Create build archive
+        run: |
+          sudo tar -cJvf "libnode-linux-x64.tar.xz" "/home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x64-pointer-compression/lib/libnode.so.108"
+      - name: Release the new binaries
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: "latest"
+          files: libnode-linux-x64.tar.xz
 
   build-linux-x86:
     runs-on: ubuntu-latest
@@ -49,3 +58,12 @@ jobs:
         with:
           name: libnode-x86.so.108
           path: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x86/lib/libnode.so.108
+      - name: Create build archive
+        run: |
+          sudo tar -cJvf "libnode-linux-x86.tar.xz" "/home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x86/lib/libnode.so.108"
+      - name: Release the new binaries
+        uses: softprops/action-gh-release@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: "latest"
+          files: libnode-linux-x86.tar.xz
