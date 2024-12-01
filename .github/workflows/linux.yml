@@ -10,36 +10,6 @@ env:
   FLAKY_TESTS: dontcare
 
 jobs:
-  build-linux-x64:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          persist-credentials: false
-      - name: Build
-        run: |
-          bin/local_build.sh -r x64-pointer-compression -v v18.20.3
-      - name: Extract tgz
-        uses: ihiroky/extract-action@v1
-        with:
-          file_path: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x64-pointer-compression.tar.xz
-          extract_dir: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: libnode-x64.so.108
-          path: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x64-pointer-compression/lib/libnode.so.108
-      - name: Create build archive
-        run: |
-          cd /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x64-pointer-compression/lib
-          sudo tar -cJvf "libnode-linux-x64.tar.xz" "libnode.so.108"
-      - name: Release the new binaries
-        uses: softprops/action-gh-release@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          tag_name: "latest"
-          files: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x64-pointer-compression/lib/libnode-linux-x64.tar.xz
-
   build-linux-x86:
     runs-on: ubuntu-latest
     steps:
@@ -48,24 +18,24 @@ jobs:
           persist-credentials: false
       - name: Build
         run: |
-          bin/local_build.sh -r x86 -v v18.20.3
+          bin/local_build.sh -r x86 -v v20.18.1
       - name: Extract tgz
         uses: ihiroky/extract-action@v1
         with:
-          file_path: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x86.tar.xz
-          extract_dir: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3
+          file_path: /home/runner/work/node-unofficial-builds/staging/release/v20.18.1/node-v20.18.1-linux-x86.tar.xz
+          extract_dir: /home/runner/work/node-unofficial-builds/staging/release/v20.18.1
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: libnode-x86.so.108
-          path: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x86/lib/libnode.so.108
+          name: libnode-x86.so.115
+          path: /home/runner/work/node-unofficial-builds/staging/release/v20.18.1/node-v20.18.1-linux-x86/lib/libnode.so.115
       - name: Create build archive
         run: |
-          cd /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x86/lib
-          sudo tar -cJvf "libnode-linux-x86.tar.xz" "libnode.so.108"
+          cd /home/runner/work/node-unofficial-builds/staging/release/v20.18.1/node-v20.18.1-linux-x86/lib
+          sudo tar -cJvf "libnode-linux-x86.tar.xz" "libnode.so.115"
       - name: Release the new binaries
         uses: softprops/action-gh-release@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           tag_name: "latest"
-          files: /home/runner/work/node-unofficial-builds/staging/release/v18.20.3/node-v18.20.3-linux-x86/lib/libnode-linux-x86.tar.xz
+          files: /home/runner/work/node-unofficial-builds/staging/release/v20.18.1/node-v20.18.1-linux-x86/lib/libnode-linux-x86.tar.xz
